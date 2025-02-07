@@ -28,7 +28,4 @@ for filename in os.listdir(path):
         print(f"{filename} is loading...")
         get_input(user_input)
         liteon_log_parser.parse_file(path, filename, "IC80", user_input)
-    else:
-        print("No CSV formatted log files found.")
-        break
     user_input.clear()
