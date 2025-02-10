@@ -12,13 +12,13 @@ def parse_file(path, csv_file, evse_model, test_time):
                 pst_date = datetime.strptime(time, "%m:%d")
                 pst_date = pst_date.replace(year=datetime.now().year)
                 utc_date = pst_date + timedelta(days=1)
-                utc_test_time.append(utc_date.strftime("%a %b %d").lstrip('0').replace(' 0', '  '))   # fix logic here
+                utc_test_time.append(utc_date.strftime("%a %b %d").lstrip('0').replace(' 0', '  '))
                 # print(utc_test_time[2])
             else:
                 pst_date = datetime.strptime(time, "%m:%d")
                 pst_date = pst_date.replace(year=datetime.now().year)
                 utc_date = pst_date.astimezone(timezone.utc)
-                utc_test_time.append(utc_date.strftime("%a %b %d").lstrip('0').replace(' 0', '  '))   # fix logic here
+                utc_test_time.append(utc_date.strftime("%a %b %d").lstrip('0').replace(' 0', '  '))
                 # print(utc_test_time[2])
         else:
             time_format = "%H:%M"
@@ -69,5 +69,5 @@ def parse_file(path, csv_file, evse_model, test_time):
     # Results of Wi-Fi roaming test w/ UUT charger
     print(f"# of WAP hops ({evse_model}): {hop_count}")
     if len(roaming_times) > 0:
-        print(f"Avg Wi-Fi Roaming Time (hh:mm:ss): {sum(roaming_times, timedelta()) / len(roaming_times)}")
-        print(f"Max Wi-Fi Roaming Time (hh:mm:ss): {max(roaming_times)}")
+        print(f"Avg Wi-Fi Roaming Time (s): {(sum(roaming_times, timedelta()) / len(roaming_times)).total_seconds()}s")
+        print(f"Max Wi-Fi Roaming Time (s): {max(roaming_times).total_seconds()}s\n")
