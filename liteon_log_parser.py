@@ -2,6 +2,7 @@ import csv
 import re
 from datetime import datetime, timedelta, timezone
 from dateutil import parser
+import statistics as stats
 
 def parse_file(path, csv_file, evse_model, test_time):
     # Convert PST test times to UTC (PST is UTC-8)
@@ -70,4 +71,7 @@ def parse_file(path, csv_file, evse_model, test_time):
     print(f"# of WAP hops ({evse_model}): {hop_count}")
     if len(roaming_times) > 0:
         print(f"Avg Wi-Fi Roaming Time (s): {(sum(roaming_times, timedelta()) / len(roaming_times)).total_seconds()}s")
-        print(f"Max Wi-Fi Roaming Time (s): {max(roaming_times).total_seconds()}s\n")
+        print(f"Max Wi-Fi Roaming Time (s): {max(roaming_times).total_seconds()}s")
+        print(f"Median Wi-Fi Roaming Time (s): {stats.median(roaming_times).total_seconds()}s")
+        roaming_times_sec = [rt.total_seconds() for rt in roaming_times]
+        print(f"Stdev Wi-Fi Roaming Time (s): {stats.stdev(roaming_times_sec):.3f}s\n")

@@ -6,6 +6,7 @@ def get_input(user_input_list):
     user_input_list.append(input("Enter start time of test in 24hr format (hh:mm): "))
     user_input_list.append(input("Enter end time of test in 24hr format (hh:mm): "))
     user_input_list.append(input("Enter date of test (mm:dd): "))
+    print("---------------------------")
     return user_input_list
 
 # Find charger's log and parse it
