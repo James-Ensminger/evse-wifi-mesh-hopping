@@ -10,7 +10,7 @@ def get_input(user_input_list):
     return user_input_list
 
 # Find charger's log and parse it
-path = "C:\\Users\\scripts\\evse-wifi-mesh-hopping\\evse-wifi-mesh-hopping\\logs"
+path = os.path.join(os.getcwd(), "logs")
 user_input = []
 for filename in os.listdir(path):
     if filename.__contains__("SC48") and filename.endswith(".csv"):
