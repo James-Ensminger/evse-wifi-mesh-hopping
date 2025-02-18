@@ -14,19 +14,19 @@ path = os.path.join(os.getcwd(), "logs")
 user_input = []
 for filename in os.listdir(path):
     if filename.__contains__("SC48") and filename.endswith(".csv"):
-        print(f"{filename} is loading...")
+        print(f'"{filename}" is loading...')
         get_input(user_input)
         liteon_log_parser.parse_file(path, filename, "SC48", user_input)
     elif filename.__contains__("SC48_POS") and filename.endswith(".csv"):
-        print(f"{filename} is loading...")
+        print(f'"{filename}" is loading...')
         get_input(user_input)
         liteon_log_parser.parse_file(path, filename, "SC48_POS", user_input)
     elif filename.__contains__("IC48") and filename.endswith(".csv"):
-        print(f"{filename} is loading...")
+        print(f'"{filename}" is loading...')
         get_input(user_input)
         liteon_log_parser.parse_file(path, filename, "IC48", user_input)
     elif filename.__contains__("IC80") and filename.endswith(".csv"):
-        print(f"{filename} is loading...")
+        print(f'"{filename}" is loading...')
         get_input(user_input)
         liteon_log_parser.parse_file(path, filename, "IC80", user_input)
     user_input.clear()

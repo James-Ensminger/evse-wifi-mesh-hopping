@@ -75,3 +75,5 @@ def parse_file(path, csv_file, evse_model, test_time):
         print(f"Median Wi-Fi Roaming Time (s): {stats.median(roaming_times).total_seconds()}s")
         roaming_times_sec = [rt.total_seconds() for rt in roaming_times]
         print(f"Stdev Wi-Fi Roaming Time (s): {stats.stdev(roaming_times_sec):.3f}s\n")
+    else:
+        print("No WAP hops recorded.")
